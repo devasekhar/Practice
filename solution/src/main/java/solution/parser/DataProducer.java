@@ -2,7 +2,9 @@ package solution.parser;
 
 import solution.model.Data;
 
-// can be writtern more genric dataproducer
+/*
+ * DataProducer uses builder to generate the Data instance
+ */
 public class DataProducer {
 	
 	enum Attribute

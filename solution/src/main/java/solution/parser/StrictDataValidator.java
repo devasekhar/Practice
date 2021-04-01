@@ -3,14 +3,27 @@ package solution.parser;
 import java.util.ArrayList;
 import java.util.List;
 
-//composite pattern
+/*
+ *  StrictDataValidator combines both SimpleDataValidator and SimpleDataValidator
+ *  Basically trying to match attributes of Data
+ *  composite pattern has been used
+ */
+
 public class StrictDataValidator implements DataValidator {
+
+	private static StrictDataValidator instance = new StrictDataValidator();
 	private List<DataValidator> validators;
 
-	public StrictDataValidator() {
+	private StrictDataValidator() {
+
 		validators = new ArrayList<>();
-		validators.add(new SimpleDataValidator());
-		validators.add(new BuildDurationAttributeValidator());
+		validators.add(SimpleDataValidator.getInstance());
+		validators.add(BuildDurationAttributeValidator.getInstance());
+
+	}
+
+	public static StrictDataValidator getInstance() {
+		return instance;
 	}
 
 	public void addValidator(DataValidator validator) {

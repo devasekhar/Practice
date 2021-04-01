@@ -1,6 +1,20 @@
 package solution.parser;
 
+/*
+ * Checks whether input string provided ends with character s after splitting based ','
+ * Basically trying to match buildduration of Data attribute
+ */
 public class BuildDurationAttributeValidator implements DataValidator {
+
+	private static BuildDurationAttributeValidator instance = new BuildDurationAttributeValidator();
+
+	private BuildDurationAttributeValidator() {
+
+	}
+
+	public static DataValidator getInstance() {
+		return instance;
+	}
 
 	public boolean valid(String str) {
 		String[] attributes = str.split(",");

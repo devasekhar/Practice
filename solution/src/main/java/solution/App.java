@@ -7,11 +7,11 @@ import java.util.Map;
 import solution.aggregator.Aggregator;
 import solution.model.Data;
 import solution.parser.DataParser;
+import solution.parser.DataParserFactory;
 import solution.parser.IParser;
 import solution.parser.StrictDataValidator;
 
 public class App {
-
 	public static void main(String[] args) {
 
 		String str = "2343225,2345,us_east,RedTeam,ProjectApple,3445s\n"
@@ -20,10 +20,10 @@ public class App {
 				+ "1233456,2345,us_west,BlueTeam,ProjectDate,2221s\n"
 				+ "3244132,2346,eu_west,YellowTeam3,ProjectEgg,4122s";
 
-		IParser<Data> parser = new DataParser();
+		IParser<Data> parser = DataParserFactory.getDataParser(DataParserFactory.dataPraser);
 		try {
 
-			List<Data> list = parser.parse(str, new StrictDataValidator());
+			List<Data> list = parser.parse(str, StrictDataValidator.getInstance());
 
 			// The number of unique customerId for each contractId.
 			Map<Integer, Integer> map1 = Aggregator.getCountOfTgroupedByK(list, Data::getContractId,

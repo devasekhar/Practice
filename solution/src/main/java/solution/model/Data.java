@@ -1,7 +1,10 @@
 package solution.model;
 
-//Builder pattern has been used
-//This can be made Immutable Object
+/*
+ * Data class has customerId,contractId,geozone,teamcode,projectcode and projectcode attributes
+ * Builder pattern has been used to generate the Data object
+ * This can be made Immutable Object
+ */
 public class Data implements IData {
 
 	private String customerId;
